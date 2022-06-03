@@ -3,9 +3,9 @@ from django.db import models
 # HOME SECTION
 
 class Home(models.Model):
-    name = models.CharField(max_length=30)
-    greetings_1 = models.CharField(max_length=100)
-    greetings_2 = models.CharField(max_length=100, blank=True)
+    name = models.CharField(max_length=50)
+    greetings_1 = models.CharField(max_length=200)
+    greetings_2 = models.CharField(max_length=200, blank=True)
    
     #modified time
     updated = models.DateTimeField(auto_now=True)
@@ -17,8 +17,8 @@ class Home(models.Model):
 # ABOUT SECTION
 
 class About(models.Model):
-    heading = models.CharField(max_length=100)
-    career = models.CharField(max_length=100)
+    heading = models.CharField(max_length=200)
+    career = models.CharField(max_length=200)
     description = models.TextField(blank=False)
     profile_img = models.ImageField(upload_to='profile/')
     
@@ -31,7 +31,7 @@ class About(models.Model):
 class Profile(models.Model):
     about = models.ForeignKey(About,
                                 on_delete=models.CASCADE)
-    social_name = models.CharField(max_length=10)
+    social_name = models.CharField(max_length=20)
     link = models.URLField(max_length=200)
 
 
@@ -39,7 +39,7 @@ class Profile(models.Model):
 # SKILLS SECTION
 
 class Category(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=40)
 
     updated = models.DateTimeField(auto_now=True)
 
@@ -53,7 +53,7 @@ class Category(models.Model):
 class Skills(models.Model):
     category = models.ForeignKey(Category,
                                 on_delete=models.CASCADE)
-    skill_name = models.CharField(max_length=20)
+    skill_name = models.CharField(max_length=40)
 
     
 
